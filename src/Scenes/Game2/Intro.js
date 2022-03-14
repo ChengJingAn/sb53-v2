@@ -72,9 +72,9 @@ const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo ,showMusicBtn}, r
             }, 500);
         }
 
-        // audioList.titleAudio.pause();
-        // audioList.titleAudio = loadSound('SB_53_Audio_10');
         audioList.titleAudio.pause();
+        audioList.titleAudio.currentTime = 0;
+
 
         gamePanelRef.current.style.display = 'inline-block'
         gamePanelRef.current.style.transition = '1s'
@@ -162,7 +162,7 @@ const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo ,showMusicBtn}, r
                             style={{
                                 position: "fixed", width: _baseGeo.width * 0.45 + "px",
                                 left: _baseGeo.width * 0.25 + _baseGeo.left + "px"
-                                , bottom: _baseGeo.height * 0.4 + _baseGeo.bottom + "px",
+                                , bottom: _baseGeo.height * 0.45 + _baseGeo.bottom + "px",
                             }}>
                             <img draggable={false} width={"100%"}
                                 src={prePathUrl() + 'images/SB_53_BG-Intro/Game2/SB_53_Intro_game2_name_01 .svg'}
