@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import "../../stylesheets/styles.css";
 
 import { UserContext } from '../../components/BaseShot';
-import { prePathUrl, initialAudio } from '../../components/CommonFunctions';
+import { prePathUrl, initialAudio, startRepeatAudio } from '../../components/CommonFunctions';
 import GamePanel from "./GamePanel"
 import Review from "./Review"
 import loadSound from '../../utils/loadSound';
 var isGameStarted = false;
 let timerList = []
-const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo ,showMusicBtn}, ref) => {
+const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo, showMusicBtn }, ref) => {
 
     const audioList = useContext(UserContext)
     const [isIntroHide, setIntroHide] = useState(false)
@@ -89,6 +89,7 @@ const BaseScene = React.forwardRef(({ nextFunc, _geo, _baseGeo ,showMusicBtn}, r
                 audioList.bodyAudio.play();
                 timerList[1] = setTimeout(() => {
                     audioList.subBodyAudio.play();
+                    startRepeatAudio();
                 }, audioList.bodyAudio.duration * 1000 + 1000);
             }, 1000);
             setIntroHide(true)
